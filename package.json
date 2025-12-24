@@ -2,16 +2,21 @@
   "name": "fault-tolerant-command-executor",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "type": "module",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm install && tsc && node dist/src/server.js ",
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^25.0.3",
     "@types/sequelize": "^4.28.20",
     "sequelize-cli": "^6.6.3",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"
   },
   "repository": {
@@ -25,6 +30,7 @@
   },
   "homepage": "https://github.com/yusufmsabeh/fault-tolerant-command-executor#readme",
   "dependencies": {
+    "express": "^5.2.1",
     "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7"
   }
