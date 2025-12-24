@@ -13,4 +13,9 @@ export class CommandService {
 
     return command;
   }
+
+  static async getCommand(id: string) {
+    const command = await Command.findByPk(id);
+    return command;
+  }
 }
