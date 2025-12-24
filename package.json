@@ -1,0 +1,31 @@
+{
+  "name": "fault-tolerant-command-executor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "@types/sequelize": "^4.28.20",
+    "sequelize-cli": "^6.6.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusufmsabeh/fault-tolerant-command-executor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yusufmsabeh/fault-tolerant-command-executor/issues"
+  },
+  "homepage": "https://github.com/yusufmsabeh/fault-tolerant-command-executor#readme",
+  "dependencies": {
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
+  }
+}
