@@ -14,4 +14,21 @@ export class CommandController {
     }
   }
 
+  static async get(req: Request, res: Response) {
+    try {
+      const command = await CommandService.getCommand(req.params.id);
+      if (!command) {
+        return res.status(404).json({ error: "Command not found" });
+      }
+
+      res.json({
+        status: command.status,
+        result: command.result,
+        agentId: command.agentId,
+      });
+    } catch (error) {
+      Logger.error(`Error getting command: ${error}`);
+      res.status(500).json({ error: "Failed to get command" });
+    }
+  }
 }
