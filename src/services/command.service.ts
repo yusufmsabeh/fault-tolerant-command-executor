@@ -18,4 +18,44 @@ export class CommandService {
     const command = await Command.findByPk(id);
     return command;
   }
+
+  static async findRunningCommandForAgent(agentId: string) {
+    const command = await Command.findOne({
+      where: {
+        agentId,
+        status: "RUNNING",
+      },
+    });
+    return command;
+  }
+
+  static async markCommandAsFailed(commandId: string, error: string) {
+    const command = await Command.findByPk(commandId);
+    if (command) {
+      command.status = "FAILED";
+      command.error = error;
+      command.completedAt = new Date();
+      await command.save();
+    }
+    return command;
+  }
+
+  static async getNextPendingCommand(agentId: string) {
+    const command = await Command.findOne({
+      where: {
+        status: "PENDING",
+      },
+      order: [["createdAt", "ASC"]],
+    });
+
+    if (command) {
+      command.status = "RUNNING";
+      command.agentId = agentId;
+      command.startedAt = new Date();
+      command.attempt = command.attempt + 1;
+      await command.save();
+    }
+
+    return command;
+  }
 }
