@@ -58,4 +58,38 @@ export class CommandService {
 
     return command;
   }
+
+  static async updateCommandResult(
+    commandId: string,
+    agentId: string,
+    status: "COMPLETED" | "FAILED",
+    result?: object,
+    error?: string
+  ) {
+    const command = await Command.findOne({
+      where: {
+        id: commandId,
+        agentId,
+        status: "RUNNING",
+      },
+    });
+
+    if (!command) {
+      return null; // Command not found or not owned by this agent
+    }
+
+    command.status = status;
+    command.completedAt = new Date();
+
+    if (result) {
+      command.result = result;
+    }
+
+    if (error) {
+      command.error = error;
+    }
+
+    await command.save();
+    return command;
+  }
 }

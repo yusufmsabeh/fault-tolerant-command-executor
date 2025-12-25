@@ -72,4 +72,47 @@ export class CommandController {
       res.status(500).json({ error: "Failed to get next command" });
     }
   }
+
+  static async updateResult(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const { agentId, status, result, error } = req.body;
+
+      if (!agentId) {
+        return res.status(400).json({ error: "agentId is required" });
+      }
+
+      if (!status || !["COMPLETED", "FAILED"].includes(status)) {
+        return res
+          .status(400)
+          .json({ error: "status must be COMPLETED or FAILED" });
+      }
+
+      const command = await CommandService.updateCommandResult(
+        id,
+        agentId,
+        status,
+        result,
+        error
+      );
+
+      if (!command) {
+        return res.status(403).json({
+          error: "Unauthorized: Command not found or not assigned to this agent",
+        });
+      }
+
+      Logger.info(
+        `Command ${id} completed by agent ${agentId} with status ${status}`
+      );
+
+      res.json({
+        commandId: command.id,
+        status: command.status,
+      });
+    } catch (error) {
+      Logger.error(`Error updating command result: ${error}`);
+      res.status(500).json({ error: "Failed to update command result" });
+    }
+  }
 }
