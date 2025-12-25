@@ -5,8 +5,12 @@ import { Logger } from "../utils/logger";
 export class CommandController {
   static async create(req: Request, res: Response) {
     try {
-      const { type, payload } = req.body;
-      const command = await CommandService.createCommand(type, payload);
+      const { type, payload, isIdempotent = false } = req.body;
+      const command = await CommandService.createCommand(
+        type,
+        payload,
+        isIdempotent
+      );
       res.status(201).json({ commandId: command.id });
     } catch (error) {
       Logger.error(`Error creating command: ${error}`);
