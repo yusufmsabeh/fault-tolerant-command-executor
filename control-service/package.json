@@ -1,11 +1,11 @@
 {
-  "name": "fault-tolerant-command-executor",
+  "name": "control-service",
   "version": "1.0.0",
-  "description": "",
+  "description": "Control Service for Fault-Tolerant Command Executor",
   "main": "server.js",
   "scripts": {
-    "build": "npm install && tsc && node dist/src/server.js ",
-    "start": "node dist/server.js",
+    "build": "npm install && tsc",
+    "start": "node dist/src/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "migrate": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo"

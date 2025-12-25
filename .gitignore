@@ -140,3 +140,6 @@ vite.config.ts.timestamp-*
 
 # database
 *.sqlite
+
+# Old src folder (moved to control-service)
+/src/
