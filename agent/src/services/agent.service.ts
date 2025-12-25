@@ -87,5 +87,13 @@ export class AgentService {
     const agent = this.getAgent(agentId);
     return agent?.state === "RUNNING";
   }
+
+  /**
+   * Check if agent is currently running a specific command
+   */
+  static isAgentRunningCommand(agentId: string, commandId: string): boolean {
+    const agent = this.getAgent(agentId);
+    return agent?.state === "RUNNING" && agent?.currentCommandId === commandId;
+  }
 }
 

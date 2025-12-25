@@ -12,11 +12,22 @@ export class AgentController {
 
   /**
    * Get agent status (is agent running a command?)
+   * If commandId query param provided, checks if agent is running that specific command
    */
   static getStatus(req: Request, res: Response) {
     try {
       const { agentId } = req.params;
-      const isRunning = AgentService.isAgentRunning(agentId);
+      const { commandId } = req.query;
+
+      let isRunning: boolean;
+
+      if (commandId && typeof commandId === "string") {
+        // Check if agent is running this specific command
+        isRunning = AgentService.isAgentRunningCommand(agentId, commandId);
+      } else {
+        // Check if agent is running any command
+        isRunning = AgentService.isAgentRunning(agentId);
+      }
 
       res.json({ isRunning });
     } catch (error) {
