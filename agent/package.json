@@ -1,0 +1,31 @@
+{
+  "name": "agent-service",
+  "version": "1.0.0",
+  "description": "Agent Service for executing commands",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "npm install && tsc && node dist/src/server.js",
+    "start": "node dist/src/server.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.3",
+    "@types/sequelize": "^4.28.20",
+    "@types/uuid": "^10.0.0",
+    "sequelize-cli": "^6.6.3",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7",
+    "uuid": "^11.0.5"
+  }
+}

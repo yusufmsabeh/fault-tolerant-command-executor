@@ -38,8 +38,7 @@ export class CommandController {
 
   static async next(req: Request, res: Response) {
     try {
-      const { agentId } = req.body;
-
+      const agentId = req.header("X-Agent-Id");
       if (!agentId) {
         return res.status(400).json({ error: "agentId is required" });
       }
@@ -102,7 +101,8 @@ export class CommandController {
 
       if (!command) {
         return res.status(403).json({
-          error: "Unauthorized: Command not found or not assigned to this agent",
+          error:
+            "Unauthorized: Command not found or not assigned to this agent",
         });
       }
 
