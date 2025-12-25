@@ -50,12 +50,9 @@ export class CommandController {
 
       if (runningCommand) {
         Logger.warn(
-          `Agent ${agentId} crashed while working on command ${runningCommand.id}. Marking as FAILED.`
+          `Agent ${agentId} requesting new work but has RUNNING command ${runningCommand.id}. Applying recovery logic...`
         );
-        await CommandService.markCommandAsFailed(
-          runningCommand.id,
-          "Agent crashed during execution"
-        );
+        await CommandService.recoverRunningCommand(runningCommand.id, agentId);
       }
 
       // Get next pending command
