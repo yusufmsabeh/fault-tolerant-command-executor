@@ -144,17 +144,18 @@ export class CommandService {
         return;
       }
 
-      // Step 2: No logs found - check if agent is still running this command
+      // Step 2: No logs found - check if agent is still running this specific command
       const agentRunning = await this.isAgentRunningCommand(
         agentId,
+        commandId,
         agentServiceUrl,
         timeout
       );
 
       if (agentRunning) {
-        // Agent is still running the command - keep it as RUNNING
+        // Agent is still running this specific command - keep it as RUNNING
         Logger.info(
-          `Command ${commandId}: Agent ${agentId} still running, keeping RUNNING status`
+          `Command ${commandId}: Agent ${agentId} still running this command, keeping RUNNING status`
         );
         return;
       }
@@ -207,17 +208,21 @@ export class CommandService {
   }
 
   /**
-   * Check if a specific agent is currently running a command
+   * Check if a specific agent is currently running a specific command
    */
   private static async isAgentRunningCommand(
     agentId: string,
+    commandId: string,
     agentServiceUrl: string,
     timeout: number
   ): Promise<boolean> {
     try {
       const response = await axios.get<{ isRunning: boolean }>(
         `${agentServiceUrl}/agent/status/${agentId}`,
-        { timeout }
+        {
+          params: { commandId },
+          timeout
+        }
       );
       return response.data.isRunning;
     } catch (error) {
