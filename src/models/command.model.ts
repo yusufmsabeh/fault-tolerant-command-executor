@@ -15,6 +15,8 @@ export class Command extends Model {
 
   declare startedAt: Date | null;
   declare completedAt: Date | null;
+
+  declare isIdempotent: boolean;
 }
 
 Command.init(
@@ -65,6 +67,13 @@ Command.init(
     completedAt: {
       type: DataTypes.DATE,
       field: "completed_at",
+    },
+
+    isIdempotent: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+      field: "is_idempotent",
     },
   },
   {
