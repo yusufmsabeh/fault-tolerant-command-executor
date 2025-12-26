@@ -98,20 +98,64 @@ export class CommandExecutorService {
     try {
       const response = await axios.get(payload.url, {
         timeout: 30000,
+        maxContentLength: 10 * 1024 * 1024, // 10MB limit
+        maxBodyLength: 10 * 1024 * 1024,
       });
+
+      // Calculate response size
+      const responseBody = response.data;
+      const bodyString = typeof responseBody === 'string'
+        ? responseBody
+        : JSON.stringify(responseBody);
+      const bytesReturned = Buffer.byteLength(bodyString, 'utf8');
+
+      // Check if response was truncated (10MB limit)
+      const maxBytes = 10 * 1024 * 1024;
+      const truncated = bytesReturned >= maxBytes;
 
       return {
         status: "COMPLETED",
         result: {
-          statusCode: response.status,
-          data: response.data,
+          status: response.status,
+          body: responseBody,
+          truncated: truncated,
+          bytesReturned: bytesReturned,
+          error: null,
         },
         error: null,
       };
     } catch (error: any) {
+      // Handle HTTP errors (4xx, 5xx)
+      if (error.response) {
+        const responseBody = error.response.data;
+        const bodyString = typeof responseBody === 'string'
+          ? responseBody
+          : JSON.stringify(responseBody);
+        const bytesReturned = Buffer.byteLength(bodyString, 'utf8');
+
+        return {
+          status: "COMPLETED",
+          result: {
+            status: error.response.status,
+            body: responseBody,
+            truncated: false,
+            bytesReturned: bytesReturned,
+            error: error.message,
+          },
+          error: null,
+        };
+      }
+
+      // Handle network errors, timeouts, etc.
       return {
         status: "FAILED",
-        result: null,
+        result: {
+          status: 0,
+          body: null,
+          truncated: false,
+          bytesReturned: 0,
+          error: error.message,
+        },
         error: error.message,
       };
     }
