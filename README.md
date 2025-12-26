@@ -43,7 +43,7 @@ PENDING → RUNNING → COMPLETED / FAILED
 * **Agent restart recovery:**
   * Agent requests the next command from the server.
   * Server performs the same recovery logic for commands assigned to that agent.
-
+![recovery flow diagram](https://github.com/yusufmsabeh/fault-tolerant-command-executor/blob/docs/documention/images/flow-recovery.png?raw=true)
 ---
 
 ## 3. Persistence
