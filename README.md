@@ -109,8 +109,8 @@ Two types of commands are supported:
 cd control-service
 ```
 
-2. Copy `.env.example` to `.env` and configure variables.
-3. Install dependencies:
+1. Copy `.env.example` to `.env` and configure variables.
+2. Install dependencies:
 
 ```bash
 npm install
@@ -134,25 +134,25 @@ npm run dev
 cd agent
 ```
 
-3. Install dependencies:
+1. Install dependencies:
 
 ```bash
 npm install
 ```
 
-3. Run database migrations:
+2. Run database migrations:
 
 ```bash
 npm run migrate
 ```
 
-4. Start the server:
+3. Start the server:
 
 ```bash
 npm run dev
 ```
 
-6. Example workflow:
+ **Example workflow:**
    * Create command: `POST /api/commands`
    * Agent picks up the command and executes it
    * Check status: `GET /api/commands/:id`
