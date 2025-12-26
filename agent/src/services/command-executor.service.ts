@@ -14,7 +14,7 @@ interface ExecutionResult {
 
 export class CommandExecutorService {
   private static randomFailureRate = parseFloat(
-    process.env.RANDOM_FAILURE_RATE || "0.3"
+    process.env.RANDOM_FAILURE_RATE || "0.3",
   );
 
   /**
@@ -24,18 +24,16 @@ export class CommandExecutorService {
     commandId: string,
     type: string,
     payload: CommandPayload,
-    randomFailures: boolean
+    randomFailures: boolean,
   ): Promise<ExecutionResult> {
     Logger.info(`Executing command ${commandId} of type ${type}`);
 
     // Check for random failure (30% chance)
     if (randomFailures && Math.random() < this.randomFailureRate) {
-      Logger.warn(`Command ${commandId}: Random failure triggered (30% chance)`);
-      return {
-        status: "FAILED",
-        result: null,
-        error: "Random failure simulation",
-      };
+      Logger.warn(
+        `Command ${commandId}: Random failure triggered (30% chance)`,
+      );
+      process.exit(1);
     }
 
     try {
@@ -67,7 +65,7 @@ export class CommandExecutorService {
    * Execute DELAY command
    */
   private static async executeDelay(
-    payload: CommandPayload
+    payload: CommandPayload,
   ): Promise<ExecutionResult> {
     const ms = payload.ms || 0;
     Logger.info(`Delaying for ${ms}ms`);
@@ -85,7 +83,7 @@ export class CommandExecutorService {
    * Execute HTTP_GET_JSON command
    */
   private static async executeHttpGet(
-    payload: CommandPayload
+    payload: CommandPayload,
   ): Promise<ExecutionResult> {
     if (!payload.url) {
       return {
@@ -126,4 +124,3 @@ export class CommandExecutorService {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
-

@@ -143,3 +143,6 @@ vite.config.ts.timestamp-*
 
 # Old src folder (moved to control-service)
 /src/
+
+.idea/*
+!.idea/runConfigurations/
