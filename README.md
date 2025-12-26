@@ -103,7 +103,7 @@ Two types of commands are supported:
 
 ## 6. Running the Project
 
-####Control-service
+#### Control-service
 
 ```bash
 cd control-service
@@ -128,7 +128,7 @@ npm run migrate
 npm run dev
 ```
 
-####agent:
+#### agent:
 
 ```bash
 cd agent
