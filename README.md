@@ -2,6 +2,7 @@
 
 ## 1. Project Overview
 **More Info Found Here:** [FigJam](https://www.figma.com/board/2NCa7wt5p3K9COs8h4v4Sq/Single-Fault?node-id=0-1&t=7cKu71mlpLv2HiPR-1)
+
 This project is a **fault-tolerant command execution system** with an **agent-server architecture**.
 
 * **Purpose:** Demonstrate **idempotency** and **crash recovery** in a distributed system.
