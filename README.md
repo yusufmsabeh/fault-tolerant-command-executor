@@ -103,6 +103,20 @@ Two types of commands are supported:
 
 ## 6. Running the Project
 
+## 7. Docker
+
+* Both the Control Server and Agent can run using Docker.
+* Steps:
+  1. Copy `.env.example` to `.env` and update values.
+  2. Run:
+
+```bash
+docker-compose up
+```
+
+* Services included: Agent, Control Server
+
+---
 #### Control-service
 
 ```bash
@@ -159,20 +173,6 @@ npm run dev
 
 ---
 
-## 7. Docker
-
-* Both the Control Server and Agent can run using Docker.
-* Steps:
-  1. Copy `.env.example` to `.env` and update values.
-  2. Run:
-
-```bash
-docker-compose up
-```
-
-* Services included: Agent, Control Server
-
----
 
 ## 8. Trade-offs & Decisions
 
