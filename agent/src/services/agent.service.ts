@@ -1,5 +1,6 @@
 import { Logger } from "../utils/logger";
-
+import { configDotenv } from "dotenv";
+configDotenv();
 export interface Agent {
   id: string;
   name: string;
@@ -22,9 +23,11 @@ export class AgentService {
    */
   static initializeAgents(count: number): void {
     const maxCount = parseInt(process.env.MAX_AGENT_COUNT || "5");
-    
+
     if (count > maxCount) {
-      Logger.warn(`Requested ${count} agents, but max is ${maxCount}. Using ${maxCount}.`);
+      Logger.warn(
+        `Requested ${count} agents, but max is ${maxCount}. Using ${maxCount}.`,
+      );
       count = maxCount;
     }
 
@@ -96,4 +99,3 @@ export class AgentService {
     return agent?.state === "RUNNING" && agent?.currentCommandId === commandId;
   }
 }
-

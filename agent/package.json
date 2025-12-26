@@ -4,7 +4,7 @@
   "description": "Agent Service for executing commands",
   "main": "dist/server.js",
   "scripts": {
-    "build": "npm install && tsc && node dist/src/server.js",
+    "build": "tsc",
     "start": "node dist/src/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "migrate": "npx sequelize-cli db:migrate",

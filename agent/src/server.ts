@@ -4,7 +4,8 @@ import { sequelize } from "./config/database";
 import { AgentService } from "./services/agent.service";
 import { PollingService } from "./services/polling.service";
 import { Logger } from "./utils/logger";
-
+import { configDotenv } from "dotenv";
+configDotenv();
 const PORT = process.env.PORT || 3001;
 
 // Parse command line arguments
@@ -33,7 +34,9 @@ async function start() {
   try {
     // Parse startup flags
     const config = parseArgs();
-    Logger.info(`Starting Agent Service with config: ${JSON.stringify(config)}`);
+    Logger.info(
+      `Starting Agent Service with config: ${JSON.stringify(config)}`,
+    );
 
     // Step 1: Connect to database
     Logger.info("Connecting to database...");
@@ -84,4 +87,3 @@ process.on("SIGTERM", () => {
 });
 
 start();
-

@@ -3,7 +3,8 @@ import { AgentService } from "./agent.service";
 import { CommandExecutorService } from "./command-executor.service";
 import { LogService } from "./log.service";
 import { Logger } from "../utils/logger";
-
+import { configDotenv } from "dotenv";
+configDotenv();
 interface CommandResponse {
   commandId: string;
   type: string;
@@ -14,10 +15,10 @@ export class PollingService {
   private static commandServiceUrl =
     process.env.COMMAND_SERVICE_URL || "http://localhost:3000";
   private static pollingInterval = parseInt(
-    process.env.POLLING_INTERVAL || "5000"
+    process.env.POLLING_INTERVAL || "5000",
   );
   private static timeout = parseInt(
-    process.env.COMMAND_SERVICE_TIMEOUT || "5000"
+    process.env.COMMAND_SERVICE_TIMEOUT || "5000",
   );
   private static randomFailures = false;
   private static pollingIntervals: Map<string, NodeJS.Timeout> = new Map();
@@ -30,7 +31,7 @@ export class PollingService {
     const activeAgents = AgentService.getActiveAgents();
 
     Logger.info(
-      `Starting polling for ${activeAgents.length} agents (interval: ${this.pollingInterval}ms)`
+      `Starting polling for ${activeAgents.length} agents (interval: ${this.pollingInterval}ms)`,
     );
 
     for (const agent of activeAgents) {
@@ -81,7 +82,7 @@ export class PollingService {
             "X-Agent-Id": agentId,
           },
           timeout: this.timeout,
-        }
+        },
       );
 
       if (response.status === 200 && response.data) {
@@ -101,7 +102,7 @@ export class PollingService {
    */
   private static async handleCommand(
     agentId: string,
-    command: CommandResponse
+    command: CommandResponse,
   ): Promise<void> {
     const { commandId, type, payload } = command;
     const startedAt = new Date();
@@ -117,7 +118,7 @@ export class PollingService {
         commandId,
         type,
         payload,
-        this.randomFailures
+        this.randomFailures,
       );
 
       const completedAt = new Date();
@@ -130,7 +131,7 @@ export class PollingService {
         result.result,
         result.error,
         startedAt,
-        completedAt
+        completedAt,
       );
 
       // Report result to Command Service
@@ -139,15 +140,15 @@ export class PollingService {
         agentId,
         result.status,
         result.result,
-        result.error
+        result.error,
       );
 
       Logger.info(
-        `Agent ${agentId} completed command ${commandId}: ${result.status}`
+        `Agent ${agentId} completed command ${commandId}: ${result.status}`,
       );
     } catch (error: any) {
       Logger.error(
-        `Agent ${agentId} failed to process command ${commandId}: ${error.message}`
+        `Agent ${agentId} failed to process command ${commandId}: ${error.message}`,
       );
     } finally {
       // Mark agent as ACTIVE (ready for next command)
@@ -163,7 +164,7 @@ export class PollingService {
     agentId: string,
     status: "COMPLETED" | "FAILED",
     result: object | null,
-    error: string | null
+    error: string | null,
   ): Promise<void> {
     try {
       await axios.patch(
@@ -174,11 +175,11 @@ export class PollingService {
           result,
           error,
         },
-        { timeout: this.timeout }
+        { timeout: this.timeout },
       );
     } catch (error: any) {
       Logger.error(
-        `Failed to report result for command ${commandId}: ${error.message}`
+        `Failed to report result for command ${commandId}: ${error.message}`,
       );
     }
   }

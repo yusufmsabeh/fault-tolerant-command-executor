@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  control-service:
+    build:
+      context: ./control-service
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "3002:5002"
+    environment:
+      - PORT=$SERVER_PORT
+      - DB_PATH=$SERVER_DB_PATH
+      - AGENT_SERVICE_URL=$AGENT_SERVICE_URL
+      - AGENT_SERVICE_TIMEOUT=$AGENT_SERVICE_TIMEOUT
+      - RECOVERY_RETRY_INTERVAL=$RECOVERY_RETRY_INTERVAL
+    stdin_open: true
+    tty: true
+
+  agent:
+    depends_on:
+      - control-service
+    build:
+      context: ./agent
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "3001:5001"
+    environment:
+      - PORT=$AGENT_PORT
+      - DB_PATH=$AGENT_DB_PATH
+      - COMMAND_SERVICE_URL=$SERVER_SERVICE_URL
+      - COMMAND_SERVICE_TIMEOUT=$SERVER_SERVICE_TIMEOUT
+      - POLLING_INTERVAL=$POLLING_INTERVAL
+      - MAX_AGENT_COUNT=$MAX_AGENT_COUNT
+      - RANDOM_FAILURE_RATE=$RANDOM_FAILURE_RATE
+    stdin_open: true
+    tty: true
