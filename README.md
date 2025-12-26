@@ -43,6 +43,7 @@ PENDING → RUNNING → COMPLETED / FAILED
 * **Agent restart recovery:**
   * Agent requests the next command from the server.
   * Server performs the same recovery logic for commands assigned to that agent.
+    ![recovery flow diagram](https://github.com/yusufmsabeh/fault-tolerant-command-executor/blob/docs/documention/images/flow-recovery.png?raw=true)
 
 ---
 
@@ -102,7 +103,7 @@ Two types of commands are supported:
 
 ## 6. Running the Project
 
-####Control-service
+#### Control-service
 
 1. 
 
@@ -129,7 +130,7 @@ npm run migrate
 npm run dev
 ```
 
-####agent:
+#### agent:
 
 1. 
 
