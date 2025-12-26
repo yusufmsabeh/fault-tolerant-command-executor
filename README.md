@@ -180,4 +180,20 @@ npm run dev
 * **`isIdempotent` column:** Determines whether the server can safely re-run a command if logs are missing.
 * **Server assigns state responsibility:** This centralizes recovery logic and avoids duplicate execution.
 
+---
+
+## 9. Reflection
+
+### How I used AI
+I used AI mainly to help me write parts of the code. The core idea and overall system design came from me as the developer acting as the architect. I was responsible for defining the logic, especially for handling edge cases and failure scenarios.
+
+For each feature, I wrote clear and detailed prompts that described the engineering requirements, constraints, and expected behavior. I found that breaking the work into small tasks (for example, asking the AI to write a single function) consistently produced better and more accurate results.
+
+### Where AI was wrong
+AI responses were often incorrect or incomplete when the prompt was short or shallow and did not fully explain the requirements or edge cases. In those cases, the generated code made assumptions that did not match the intended system behavior, especially around failure handling and recovery logic.
+
+### What required manual debugging
+I manually debugged and validated the edge cases, particularly those related to crash recovery, command state transitions, and idempotency. Ensuring correct behavior in partial failures and restart scenarios required hands-on testing and reasoning beyond what AI could reliably infer.
+
+
 
