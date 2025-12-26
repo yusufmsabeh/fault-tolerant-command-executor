@@ -2,7 +2,7 @@
 
 ## 1. Project Overview
 
-This project is a **fault-tolerant command execution system** with an ​**agent-server architecture**​.
+This project is a **fault-tolerant command execution system** with an **agent-server architecture**.
 
 * **Purpose:** Demonstrate **idempotency** and **crash recovery** in a distributed system.
 * **Audience:** Skipr evaluation team.
@@ -43,7 +43,6 @@ PENDING → RUNNING → COMPLETED / FAILED
 * **Agent restart recovery:**
   * Agent requests the next command from the server.
   * Server performs the same recovery logic for commands assigned to that agent.
-    ![recovery flow diagram](https://github.com/yusufmsabeh/fault-tolerant-command-executor/blob/docs/documention/images/flow-recovery.png?raw=true)
 
 ---
 
@@ -52,7 +51,7 @@ PENDING → RUNNING → COMPLETED / FAILED
 * **Database:** SQLite
 * **ORM:** Sequelize
 * **Reason:** Lightweight, deterministic, and easy to set up for local development.
-* All columns in the database are ​**snake\_case**​, while the application logic uses ​**camelCase**​.
+* All columns in the database are **snake\_case**, while the application logic uses **camelCase**.
 * Migrations are managed using `sequelize-cli` rather than `sequelize.sync()`.
 
 ---
@@ -103,9 +102,7 @@ Two types of commands are supported:
 
 ## 6. Running the Project
 
-#### Control-service
-
-1. 
+####Control-service
 
 ```bash
 cd control-service
@@ -130,9 +127,7 @@ npm run migrate
 npm run dev
 ```
 
-#### agent:
-
-1. 
+####agent:
 
 ```bash
 cd agent
@@ -155,8 +150,6 @@ npm run migrate
 ```bash
 npm run dev
 ```
-
-
 
 6. Example workflow:
    * Create command: `POST /api/commands`
@@ -185,5 +178,5 @@ docker-compose up
 * **Agent logs commands:** Enables the server to distinguish successfully executed commands from failed ones during recovery.
 * **`isIdempotent` column:** Determines whether the server can safely re-run a command if logs are missing.
 * **Server assigns state responsibility:** This centralizes recovery logic and avoids duplicate execution.
-
+* **More Info Found Here:** [FigJam](https://www.figma.com/board/2NCa7wt5p3K9COs8h4v4Sq/Single-Fault?node-id=0-1&t=7cKu71mlpLv2HiPR-1)
 
