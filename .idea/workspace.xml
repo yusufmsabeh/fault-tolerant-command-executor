@@ -6,16 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a8986142-3895-4ca3-beff-0d757b9143bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/agent/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/src/config/database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/agent/src/config/database.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/agent/src/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/src/services/agent.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/agent/src/services/agent.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/src/services/polling.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/agent/src/services/polling.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control-service/src/config/database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/src/config/database.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control-service/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/src/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control-service/src/services/recovery.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/src/services/recovery.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +55,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feat/dockarize-app",
+    "git-widget-placeholder": "docs/documention",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "E:/skipr/fault-tolerant-command-executor/agent",
     "node.js.detected.package.eslint": "true",
@@ -130,7 +121,7 @@
       <workItem from="1766648644149" duration="7899000" />
       <workItem from="1766670775734" duration="1001000" />
       <workItem from="1766678560781" duration="3813000" />
-      <workItem from="1766732919132" duration="4681000" />
+      <workItem from="1766732919132" duration="6674000" />
     </task>
     <servers />
   </component>
