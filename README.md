@@ -1,8 +1,9 @@
 # Fault-Tolerant Single-Agent Command Execution System
 
 ## 1. Project Overview
+**More Info Found Here:** [FigJam](https://www.figma.com/board/2NCa7wt5p3K9COs8h4v4Sq/Single-Fault?node-id=0-1&t=7cKu71mlpLv2HiPR-1)
 
-This project is a **fault-tolerant command execution system** with an ​**agent-server architecture**​.
+This project is a **fault-tolerant command execution system** with an **agent-server architecture**.
 
 * **Purpose:** Demonstrate **idempotency** and **crash recovery** in a distributed system.
 * **Audience:** Skipr evaluation team.
@@ -43,8 +44,7 @@ PENDING → RUNNING → COMPLETED / FAILED
 * **Agent restart recovery:**
   * Agent requests the next command from the server.
   * Server performs the same recovery logic for commands assigned to that agent.
-    ![recovery flow diagram](https://github.com/yusufmsabeh/fault-tolerant-command-executor/blob/docs/documention/images/flow-recovery.png?raw=true)
-
+![recovery flow diagram](https://github.com/yusufmsabeh/fault-tolerant-command-executor/blob/docs/documention/images/flow-recovery.png?raw=true)
 ---
 
 ## 3. Persistence
@@ -52,7 +52,7 @@ PENDING → RUNNING → COMPLETED / FAILED
 * **Database:** SQLite
 * **ORM:** Sequelize
 * **Reason:** Lightweight, deterministic, and easy to set up for local development.
-* All columns in the database are ​**snake\_case**​, while the application logic uses ​**camelCase**​.
+* All columns in the database are **snake\_case**, while the application logic uses **camelCase**.
 * Migrations are managed using `sequelize-cli` rather than `sequelize.sync()`.
 
 ---
@@ -105,14 +105,12 @@ Two types of commands are supported:
 
 #### Control-service
 
-1. 
-
 ```bash
 cd control-service
 ```
 
-2. Copy `.env.example` to `.env` and configure variables.
-3. Install dependencies:
+1. Copy `.env.example` to `.env` and configure variables.
+2. Install dependencies:
 
 ```bash
 npm install
@@ -132,33 +130,29 @@ npm run dev
 
 #### agent:
 
-1. 
-
 ```bash
 cd agent
 ```
 
-3. Install dependencies:
+1. Install dependencies:
 
 ```bash
 npm install
 ```
 
-3. Run database migrations:
+2. Run database migrations:
 
 ```bash
 npm run migrate
 ```
 
-4. Start the server:
+3. Start the server:
 
 ```bash
 npm run dev
 ```
 
-
-
-6. Example workflow:
+ **Example workflow:**
    * Create command: `POST /api/commands`
    * Agent picks up the command and executes it
    * Check status: `GET /api/commands/:id`
