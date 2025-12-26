@@ -2,7 +2,8 @@ import { app } from "./app";
 import { sequelize } from "./config/database";
 import { RecoveryService } from "./services/recovery.service";
 import { Logger } from "./utils/logger";
-
+import { configDotenv } from "dotenv";
+configDotenv();
 const PORT = process.env.PORT || 3000;
 
 async function start() {

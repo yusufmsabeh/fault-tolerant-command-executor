@@ -1,7 +1,8 @@
 import axios from "axios";
 import { Command } from "../models/command.model";
 import { Logger } from "../utils/logger";
-
+import { configDotenv } from "dotenv";
+configDotenv();
 interface AgentLog {
   command_id: string;
   status: "COMPLETED" | "FAILED";
@@ -10,9 +11,14 @@ interface AgentLog {
 }
 
 export class RecoveryService {
-  private static agentServiceUrl = process.env.AGENT_SERVICE_URL || "http://localhost:3001";
-  private static timeout = parseInt(process.env.AGENT_SERVICE_TIMEOUT || "5000");
-  private static retryInterval = parseInt(process.env.RECOVERY_RETRY_INTERVAL || "10000");
+  private static agentServiceUrl =
+    process.env.AGENT_SERVICE_URL || "http://localhost:3001";
+  private static timeout = parseInt(
+    process.env.AGENT_SERVICE_TIMEOUT || "5000",
+  );
+  private static retryInterval = parseInt(
+    process.env.RECOVERY_RETRY_INTERVAL || "10000",
+  );
 
   /**
    * Run recovery logic on server startup
@@ -34,7 +40,9 @@ export class RecoveryService {
       return;
     }
 
-    Logger.info(`Found ${runningCommands.length} RUNNING commands. Processing...`);
+    Logger.info(
+      `Found ${runningCommands.length} RUNNING commands. Processing...`,
+    );
 
     // Process each command sequentially
     for (const command of runningCommands) {
@@ -58,7 +66,7 @@ export class RecoveryService {
         return;
       } catch (error) {
         Logger.warn(
-          `Agent Service not available. Retrying in ${this.retryInterval / 1000} seconds...`
+          `Agent Service not available. Retrying in ${this.retryInterval / 1000} seconds...`,
         );
         await this.sleep(this.retryInterval);
       }
@@ -80,12 +88,15 @@ export class RecoveryService {
       }
 
       // Step 2: No logs found - check if agent is still running this specific command
-      const agentRunning = await this.isAgentRunningCommand(command.agentId!, command.id);
+      const agentRunning = await this.isAgentRunningCommand(
+        command.agentId!,
+        command.id,
+      );
 
       if (agentRunning) {
         // Agent is still running this specific command
         Logger.info(
-          `Command ${command.id}: Agent ${command.agentId} still running this command, keeping RUNNING status`
+          `Command ${command.id}: Agent ${command.agentId} still running this command, keeping RUNNING status`,
         );
         return;
       }
@@ -102,12 +113,12 @@ export class RecoveryService {
    * Returns null if no logs found (404)
    */
   private static async fetchCommandLogs(
-    commandId: string
+    commandId: string,
   ): Promise<AgentLog | null> {
     try {
       const response = await axios.get<AgentLog>(
         `${this.agentServiceUrl}/logs/${commandId}`,
-        { timeout: this.timeout }
+        { timeout: this.timeout },
       );
       return response.data;
     } catch (error: any) {
@@ -121,14 +132,17 @@ export class RecoveryService {
   /**
    * Check if a specific agent is currently running a specific command
    */
-  private static async isAgentRunningCommand(agentId: string, commandId: string): Promise<boolean> {
+  private static async isAgentRunningCommand(
+    agentId: string,
+    commandId: string,
+  ): Promise<boolean> {
     try {
       const response = await axios.get<{ isRunning: boolean }>(
         `${this.agentServiceUrl}/agent/status/${agentId}`,
         {
           params: { commandId },
-          timeout: this.timeout
-        }
+          timeout: this.timeout,
+        },
       );
       return response.data.isRunning;
     } catch (error) {
@@ -142,7 +156,7 @@ export class RecoveryService {
    */
   private static async updateCommandFromLogs(
     command: Command,
-    logs: AgentLog
+    logs: AgentLog,
   ): Promise<void> {
     command.status = logs.status;
     command.result = logs.result;
@@ -150,9 +164,7 @@ export class RecoveryService {
     command.completedAt = new Date();
     await command.save();
 
-    Logger.info(
-      `Command ${command.id}: Found logs, marked as ${logs.status}`
-    );
+    Logger.info(`Command ${command.id}: Found logs, marked as ${logs.status}`);
   }
 
   /**
@@ -164,7 +176,7 @@ export class RecoveryService {
       command.status = "PENDING";
       await command.save();
       Logger.info(
-        `Command ${command.id}: Agent crashed, idempotent=true, reset to PENDING`
+        `Command ${command.id}: Agent crashed, idempotent=true, reset to PENDING`,
       );
     } else {
       // Not safe to retry
@@ -173,7 +185,7 @@ export class RecoveryService {
       command.completedAt = new Date();
       await command.save();
       Logger.info(
-        `Command ${command.id}: Agent crashed, idempotent=false, marked as FAILED`
+        `Command ${command.id}: Agent crashed, idempotent=false, marked as FAILED`,
       );
     }
   }
@@ -185,4 +197,3 @@ export class RecoveryService {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
-

@@ -5,28 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8986142-3895-4ca3-beff-0d757b9143bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.sequelizerc" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/.sequelizerc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/config.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/database.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/env.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/command.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/test.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware/request-logger.middleware.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/migrations/20251224095133-init-db.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/migrations/20251225000000-add-is-idempotent-column.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/command.model.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/commands.routes.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/test.routes.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/command.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/recovery.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/command.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/logger.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/agent/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/src/config/database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/agent/src/config/database.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/agent/src/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/src/services/agent.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/agent/src/services/agent.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/src/services/polling.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/agent/src/services/polling.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/control-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/control-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/control-service/src/config/database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/src/config/database.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/control-service/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/src/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/control-service/src/services/recovery.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/control-service/src/services/recovery.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -66,27 +56,62 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\yusse\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\skipr\\fault-tolerant-command-executor\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Docker.docker-compose.yml.control-service: Compose Deployment.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feat/dockarize-app",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "E:/skipr/fault-tolerant-command-executor/agent",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\yusse\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "E:\\skipr\\fault-tolerant-command-executor\\agent\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\skipr\fault-tolerant-command-executor\agent" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\skipr\fault-tolerant-command-executor\control-service" />
+      <recent name="E:\skipr\fault-tolerant-command-executor\control-service\src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.control-service: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="control-service" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml.control-service: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -103,6 +128,9 @@
       <updated>1766567251263</updated>
       <workItem from="1766567252695" duration="1971000" />
       <workItem from="1766648644149" duration="7899000" />
+      <workItem from="1766670775734" duration="1001000" />
+      <workItem from="1766678560781" duration="3813000" />
+      <workItem from="1766732919132" duration="4681000" />
     </task>
     <servers />
   </component>
